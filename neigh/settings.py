@@ -11,6 +11,12 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+import os
+
+import django
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,6 +43,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'neighbourhood',
+    'cloudinary',
+    'bootstrap4',
+    'tinymce',
+    'crispy_forms',
+    'emoji_picker',
+    'social_django',
+    'django_extensions',
+    'phone_field',
+    'rest_framework',
+    'rest_framework.authtoken'
+
+
 ]
 
 MIDDLEWARE = [
@@ -118,3 +137,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+
+cloudinary.config( 
+    cloud_name = "cynthia123456", 
+    api_key = "349849632571232", 
+    api_secret = "CXsauSNf_MIPEHMQn4lsNrJv-Sc" 
+)
