@@ -57,7 +57,20 @@ def new_hood(request):
             hood = form.save(commit=False)
             hood.admin = request.user
             hood.save()
-            return HttpResponseRedirect(reverse("hoods"))
+            return HttpResponseRedirect(reverse("hood"))
     else:
         form = HoodForm()
-    return render(request, 'all-neighbour/new_hood.html', {'form': form})
+    return render(request, 'all-neigh/new_hood.html', {'form': form})
+
+@login_required(login_url='login')
+def user(request,id):
+    current_user = request.user
+    hood = Neighbourhood.objects.get(id=id)
+    members = Profile.objects.filter(neighbourhood=hood)
+    businesses = Business.objects.filter(neighbourhood=hood)
+    posts = Post.objects.filter(neighbourhood=hood)
+    request.user.profile.neighbourhood = hood
+    request.user.profile.save()
+    
+    return render(request, 'all-neigh/user.html', {'hood': hood,'businesses':businesses,'posts':posts,'current_user':current_user,'members':members})
+    
