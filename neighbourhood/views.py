@@ -26,3 +26,9 @@ def register(request):
     else:
         form = UserRegisterForm()
     return render(request,"registration/register.html",{'form':form})
+
+@login_required(login_url='login')
+def hood(request):
+    current_user=request.user
+    hood = Neighbourhood.objects.all()
+    return render(request,"all-neigh/hood.html",{'hood':hood,'current_user':current_user})
