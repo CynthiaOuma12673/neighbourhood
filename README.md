@@ -8,7 +8,7 @@ In this application, you get to know what is happening around you, that is, in y
 
 
 ## App Layout
-![Landing page photo](https://github.com/CynthiaOuma12673/awwards/blob/master/media/images/Screenshot%20from%202022-04-12%2019-57-22.png)
+![Landing page photo](https://github.com/CynthiaOuma12673/neighbourhood/blob/master/neighbourhood/static/photos/Screenshot%20from%202022-04-19%2001-16-37.png)
 
 ## User Stories
 As a user of the application I should be able to:
