@@ -74,3 +74,9 @@ def user(request,id):
     
     return render(request, 'all-neigh/user.html', {'hood': hood,'businesses':businesses,'posts':posts,'current_user':current_user,'members':members})
     
+@login_required(login_url='login')
+def leave_hood(request,id):
+    hood = Neighbourhood.objects.get(id=id)
+    request.user.profile.neighbourhood = None
+    request.user.profile.save()
+    return redirect('hood')
