@@ -138,3 +138,17 @@ def update_post(request,id,post_id):
     else:
         post_form = PostForm(instance=instance)
     return render(request,'all-neigh/post.html',{'post_form':post_form,'title':title})
+
+@login_required(login_url='login')
+def update_hood(request,id):
+    title = 'UPDATE HOOD'
+    instance= Neighbourhood.objects.get(id=id)
+    if request.method=='POST':
+        form = HoodForm(request.POST,request.FILES,instance=instance)
+        if form.is_valid():
+            form.save()
+        messages.success(request, ('Hood Updated Successfullly'))
+        return redirect('hood')
+    else:
+        form = HoodForm(instance=instance)
+    return render(request,'all-neigh/new_hood.html',{'form':form,'title':title})
