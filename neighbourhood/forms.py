@@ -14,3 +14,8 @@ class UserRegisterForm(UserCreationForm):
         fields= ['username','email','password1','password2']
         
 User._meta.get_field('email')._unique=True
+
+class HoodForm(forms.ModelForm):
+    class Meta:
+        model = Neighbourhood
+        exclude = ('admin',)
