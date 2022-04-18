@@ -26,3 +26,12 @@ class UpdateUserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('username', 'email')
+
+class UpdateUserProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['name', 'neighbourhood','profile_pic', 'bio', 'phone_number']
+        
+        widgets = {
+            'bio': Textarea(attrs={'cols': 20, 'rows': 5}),
+        }
