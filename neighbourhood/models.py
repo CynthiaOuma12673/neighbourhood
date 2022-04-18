@@ -18,3 +18,24 @@ class Neighbourhood(models.Model):
     health_tell = PhoneField(null=True, blank=True)
     police_number = PhoneField(null=True, blank=True)
     area_administrator = models.CharField(max_length=100,null=True)
+
+    class Meta:
+        ordering = ['-pk']
+
+    def __str__(self):
+        return f'{self.name} hood'
+
+    def create_neighborhood(self):
+        self.save()
+
+    def delete_neighborhood(self):
+        self.delete()
+        
+    def update_neighborhood(self):
+        self.update()
+    def update_occupants(self):
+        self.update()
+
+    @classmethod
+    def find_neighborhood(cls, neighborhood_id):
+        return cls.objects.filter(id=neighborhood_id)
