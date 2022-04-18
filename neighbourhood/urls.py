@@ -3,10 +3,10 @@ from . import views
 
 urlpatterns=[
     path('',views.index,name='home'),
-    path('hood/',views.hoods,name='hood'),
+    path('hood/',views.hood,name='hood'),
     path('new_hood/', views.new_hood, name='new_hood'),
     path('profile/<username>/', views.profile, name='profile'),
-    path('my_hood/<id>', views.user_hood, name='my_hood'),
+    path('my_hood/<id>', views.user, name='my_hood'),
     path('leave_hood/<id>', views.leave_hood, name='leave_hood'),
     path('new_business/<id>/', views.new_business, name='new_business'),
     path('new_post/<id>/', views.new_post, name='new_post'),

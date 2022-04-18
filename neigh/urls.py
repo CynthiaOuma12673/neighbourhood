@@ -20,7 +20,7 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('neighbour.urls')),
+    path('',include('neighbourhood.urls')),
     path('tinymce/', include('tinymce.urls')),
     path('accounts/register/',neighbour_views.register, name='register'),
     path('accounts/login/',auth_views.LoginView.as_view(redirect_authenticated_user=True), name='login'),
