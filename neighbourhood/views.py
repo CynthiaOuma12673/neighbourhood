@@ -8,3 +8,21 @@ from django.urls import reverse
 from django.forms.models import model_to_dict
 from django.contrib import messages
 # Create your views here.
+
+def index(request):
+    return render(request,'all-neigh/home.html')
+
+def register(request):
+    if request.user.is_authenticated:
+    #redirect user to the profile page
+        return redirect('home')
+    if request.method=="POST":
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            return redirect('login')
+            
+    else:
+        form = UserRegisterForm()
+    return render(request,"registration/register.html",{'form':form})
