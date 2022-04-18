@@ -166,3 +166,12 @@ def delete_post(request,id,post_id):
     post.delete_post()
     messages.info(request, ('Post Deleted'))
     return redirect('my_hood', id)
+
+@login_required(login_url='login')   
+def search_hood(request):
+    current_user= request.user
+    if request.method == 'GET':
+        name = request.GET.get("name")
+        hoods = Neighbourhood.objects.filter(name__icontains=name).all()
+
+    return render(request, 'all-neigh/search.html', {'hoods': hoods,'current_user':current_user})
